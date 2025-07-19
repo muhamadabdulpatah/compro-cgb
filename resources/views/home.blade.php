@@ -43,25 +43,25 @@
         <div class="topbar d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-                <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:{{ $website_settings['site.email']->value }}">{{ $website_settings['site.email']->value }}</a></i>
+                <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ $website_settings['site.phone_number']->value }}</span></i>
             </div>
             <div class="social-links d-none d-md-flex align-items-center">
-                <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="{{ $website_settings['site.twitter']->value }}" class="twitter"><i class="bi bi-twitter-x"></i></a>
+                <a href="{{ $website_settings['site.facebook']->value }}" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="{{ $website_settings['site.instagram']->value }}" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="{{ $website_settings['site.linkeid']->value }}" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
         </div><!-- End Top Bar -->
 
-        <div class="branding d-flex align-items-cente">
+        <div class="branding d-flex align-items-center">
 
         <div class="container position-relative d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1 class="sitename">{{ $website_settings['company_name']->value }}</h1>
+            <h1 class="sitename">{{ $website_settings['site.company_name']->value }}</h1>
             </a>
 
             <nav id="navmenu" class="navmenu">
@@ -83,15 +83,15 @@
 
     <main class="main">
         <!-- Hero Section -->
-        <section id="hero" class="hero section light-background" style="background: {{ $website_settings->hero_image
-            ? 'url(' . asset('storage/' . str_replace('\\', '/', $website_settings->hero_image)) . ')'
+        <section id="hero" class="hero section light-background" style="background: {{ $website_settings['site.hero_image']->value
+            ? 'url(' . Voyager::image($website_settings['site.hero_image']->value) . ')'
             : 'url(assets/img/hero-bg.jpg)' }} center center no-repeat; background-size: cover; min-height: 75vh;">
             <div class="container">
                 <div class="row gy-4">
                 <div class="col-lg-8 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-                    <h1>{{ $website_settings['company_name']->value }}</h1>
-                    <h3>{{ $website_settings['hero_tagline']->value }}</h3>
-                    <p>{{ $website_settings['hero_description']->value }}</p>
+                    <h1>{{ $website_settings['site.company_name']->value }}</h1>
+                    <h3>{{ $website_settings['site.hero_tagline']->value }}</h3>
+                    <p>{{ $website_settings['site.hero_description']->value }}</p>
                     <div class="text-center text-lg-start">
                     <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                         <span>Get Started</span>
@@ -117,29 +117,29 @@
 
                 <div class="row gy-3">
 
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <img src="assets/img/about.jpg" alt="" class="img-fluid">
+                    <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ Voyager::image($website_settings['site.hero_image']->value) }}" alt="" class="img-fluid">
                     </div>
 
                     <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                         <div class="about-content ps-0 ps-lg-3">
-                            <h3>{{ $about->judul }}</h3>
+                            <h3>{{ $website_settings['site.company_name']->value }}</h3>
                             <p class="fst-italic">
-                                {{ $about->deskripsi }}
+                                {!!  $website_settings['site.about_us']->value !!}
                             </p>
                             <ul>
                                 <li>
                                 <i class="bi bi-diagram-3"></i>
                                 <div>
                                     <h4>Visi</h4>
-                                    <p>{{ $about->visi }}</p>
+                                    <p>{!!  $website_settings['site.visi']->value !!}</p>
                                 </div>
                                 </li>
                                 <li>
                                 <i class="bi bi-fullscreen-exit"></i>
                                 <div>
                                     <h4>Misi</h4>
-                                    <p>{{ $about->misi }}</p>
+                                    <p>{!!  $website_settings['site.misi']->value !!}</p>
                                 </div>
                                 </li>
                             </ul>
@@ -307,8 +307,8 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p><span>Need Help?</span> <span class="description-title">Contact Us</span></p>
+                <h2>KONTAK</h2>
+                <p><span>Butuh Bantuan?</span> <span class="description-title">Hubungi Kami</span></p>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -321,28 +321,28 @@
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                         <i class="bi bi-geo-alt flex-shrink-0"></i>
                         <div>
-                        <h3>Address</h3>
-                        <p>A108 Adam Street, New York, NY 535022</p>
+                        <h3>Alamat</h3>
+                        <p>{{ $website_settings['site.company_address']->value }}</p>
                         </div>
                     </div><!-- End Info Item -->
 
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                         <i class="bi bi-telephone flex-shrink-0"></i>
                         <div>
-                        <h3>Call Us</h3>
-                        <p>+1 5589 55488 55</p>
+                        <h3>Hubungi Kami</h3>
+                        <p>{{ $website_settings['site.phone_number']->value }}</p>
                         </div>
                     </div><!-- End Info Item -->
 
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
-                        <h3>Email Us</h3>
-                        <p>info@example.com</p>
+                        <h3>Email Kami</h3>
+                        <p>{{ $website_settings['site.email']->value }}</p>
                         </div>
                     </div><!-- End Info Item -->
 
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="{{ $website_settings['site.company_maps']->value }}" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 
@@ -351,31 +351,31 @@
                     <div class="row gy-4">
 
                         <div class="col-md-6">
-                        <label for="name-field" class="pb-2">Your Name</label>
+                        <label for="name-field" class="pb-2">Nama</label>
                         <input type="text" name="name" id="name-field" class="form-control" required="">
                         </div>
 
                         <div class="col-md-6">
-                        <label for="email-field" class="pb-2">Your Email</label>
+                        <label for="email-field" class="pb-2">Email</label>
                         <input type="email" class="form-control" name="email" id="email-field" required="">
                         </div>
 
                         <div class="col-md-12">
-                        <label for="subject-field" class="pb-2">Subject</label>
+                        <label for="subject-field" class="pb-2">Subjek</label>
                         <input type="text" class="form-control" name="subject" id="subject-field" required="">
                         </div>
 
                         <div class="col-md-12">
-                        <label for="message-field" class="pb-2">Message</label>
+                        <label for="message-field" class="pb-2">Pesan</label>
                         <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
                         </div>
 
                         <div class="col-md-12 text-center">
                         <div class="loading">Loading</div>
                         <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                        <div class="sent-message">Pesan Anda telah dikirim. Terima kasih!</div>
 
-                        <button type="submit">Send Message</button>
+                        <button type="submit">Kirim Pesan</button>
                         </div>
 
                     </div>
@@ -396,12 +396,12 @@
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-6 footer-about">
                     <a href="index.html" class="d-flex align-items-center">
-                        <span class="sitename">{{ $website_settings->company_name }}</span>
+                        <span class="sitename">{{ $website_settings['site.company_name']->value }}</span>
                     </a>
                     <div class="footer-contact pt-3">
-                        <p><strong>Address:</strong> <span>{{ $website_settings->company_address }}</span></p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>{{ $website_settings->company_phone }}</span></p>
-                        <p><strong>Email:</strong> <span>{{ $website_settings->company_email }}</span></p>
+                        <p><strong>Address:</strong> <span>{{ $website_settings['site.company_address']->value }}</span></p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>{{ $website_settings['site.phone_number']->value }}</span></p>
+                        <p><strong>Email:</strong> <span>{{ $website_settings['site.email']->value }}</span></p>
                     </div>
                 </div>
 
@@ -428,10 +428,10 @@
                 <div class="col-lg-4 col-md-12">
                     <h4>Follow Us</h4>
                     <div class="social-links d-flex">
-                        <a href=""><i class="bi bi-twitter-x"></i></a>
-                        <a href=""><i class="bi bi-facebook"></i></a>
-                        <a href=""><i class="bi bi-instagram"></i></a>
-                        <a href=""><i class="bi bi-linkedin"></i></a>
+                        <a href="{{ $website_settings['site.twitter']->value }}"><i class="bi bi-twitter-x"></i></a>
+                        <a href="{{ $website_settings['site.facebook']->value }}"><i class="bi bi-facebook"></i></a>
+                        <a href="{{ $website_settings['site.instagram']->value }}"><i class="bi bi-instagram"></i></a>
+                        <a href="{{ $website_settings['site.linkeid']->value }}"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
 
@@ -439,7 +439,7 @@
         </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">{{ $website_settings->company_name }}</strong> <span>All Rights Reserved</span></p>
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">{{ $website_settings['site.company_name']->value }}</strong> <span>All Rights Reserved</span></p>
             <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you've purchased the pro version. -->
