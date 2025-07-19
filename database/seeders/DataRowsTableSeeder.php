@@ -4,369 +4,77 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use TCG\Voyager\Models\DataRow;
-use TCG\Voyager\Models\DataType;
 
 class DataRowsTableSeeder extends Seeder
 {
-    /**
-     * Auto generated seed file.
-     */
-    public function run()
+    public function run(): void
     {
-        $userDataType = DataType::where('slug', 'users')->firstOrFail();
-        $menuDataType = DataType::where('slug', 'menus')->firstOrFail();
-        $roleDataType = DataType::where('slug', 'roles')->firstOrFail();
+        $dataRows = [
+            [1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, null, 1],
+            [2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, null, 2],
+            [3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, null, 3],
+            [4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, null, 4],
+            [5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, null, 5],
+            [6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, null, 6],
+            [7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, null, 7],
+            [8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, null, 8],
+            [9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":0}', 10],
+            [10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}', 11],
+            [11, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, null, 12],
+            [12, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, null, 1],
+            [13, 2, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, null, 2],
+            [14, 2, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, null, 3],
+            [15, 2, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, null, 4],
+            [16, 3, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, null, 1],
+            [17, 3, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, null, 2],
+            [18, 3, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, null, 3],
+            [19, 3, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, null, 4],
+            [20, 3, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, null, 5],
+            [21, 1, 'role_id', 'text', 'Role', 1, 1, 1, 1, 1, 1, null, 9],
+            [29, 7, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1],
+            [30, 7, 'judul', 'text', 'Judul', 0, 1, 1, 1, 1, 1, '{}', 2],
+            [31, 7, 'deskripsi', 'text_area', 'Deskripsi', 0, 1, 1, 1, 1, 1, '{}', 3],
+            [32, 7, 'visi', 'text_area', 'Visi', 0, 1, 1, 1, 1, 1, '{}', 4],
+            [33, 7, 'misi', 'text_area', 'Misi', 0, 1, 1, 1, 1, 1, '{}', 5],
+            [34, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6],
+            [35, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7],
+            [36, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1],
+            [37, 8, 'nama', 'text', 'Nama', 0, 1, 1, 1, 1, 1, '{}', 2],
+            [38, 8, 'deskripsi', 'text', 'Deskripsi', 0, 1, 1, 1, 1, 1, '{}', 3],
+            [39, 8, 'ikon', 'image', 'Ikon', 0, 1, 1, 1, 1, 1, '{}', 4],
+            [40, 8, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 5],
+            [41, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6],
+            [42, 9, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1],
+            [43, 9, 'judul', 'text', 'Judul', 0, 1, 1, 1, 1, 1, '{}', 2],
+            [44, 9, 'deskripsi', 'text', 'Deskripsi', 0, 1, 1, 1, 1, 1, '{}', 3],
+            [47, 9, 'gambar', 'image', 'Gambar', 0, 1, 1, 1, 1, 1, '{}', 6],
+            [48, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 7],
+            [49, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8],
+            [50, 10, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1],
+            [51, 10, 'alamat', 'text', 'Alamat', 0, 1, 1, 1, 1, 1, '{}', 2],
+            [52, 10, 'no_telepon', 'text', 'No Telepon', 0, 1, 1, 1, 1, 1, '{}', 3],
+            [53, 10, 'email', 'text', 'Email', 0, 1, 1, 1, 1, 1, '{}', 4],
+            [54, 10, 'maps_embed', 'text', 'Maps Embed', 0, 1, 1, 1, 1, 1, '{}', 5],
+            [55, 10, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6],
+            [56, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7],
+        ];
 
-        $dataRow = $this->dataRow($userDataType, 'id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 1,
-            ])->save();
+        foreach ($dataRows as $row) {
+            DataRow::firstOrCreate([
+                'data_type_id' => $row[1],
+                'field' => $row[2],
+            ], [
+                'type' => $row[3],
+                'display_name' => $row[4],
+                'required' => $row[5],
+                'browse' => $row[6],
+                'read' => $row[7],
+                'edit' => $row[8],
+                'add' => $row[9],
+                'delete' => $row[10],
+                'details' => $row[11],
+                'order' => $row[12],
+            ]);
         }
-
-        $dataRow = $this->dataRow($userDataType, 'name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'email');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.email'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'password');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'password',
-                'display_name' => __('voyager::seeders.data_rows.password'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'remember_token');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.remember_token'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 5,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'created_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 6,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 7,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'avatar');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'image',
-                'display_name' => __('voyager::seeders.data_rows.avatar'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 8,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'user_belongsto_role_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
-                'display_name' => __('voyager::seeders.data_rows.role'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'model'       => 'TCG\\Voyager\\Models\\Role',
-                    'table'       => 'roles',
-                    'type'        => 'belongsTo',
-                    'column'      => 'role_id',
-                    'key'         => 'id',
-                    'label'       => 'display_name',
-                    'pivot_table' => 'roles',
-                    'pivot'       => 0,
-                ],
-                'order'        => 10,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'user_belongstomany_role_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
-                'display_name' => __('voyager::seeders.data_rows.roles'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'model'       => 'TCG\\Voyager\\Models\\Role',
-                    'table'       => 'roles',
-                    'type'        => 'belongsToMany',
-                    'column'      => 'id',
-                    'key'         => 'id',
-                    'label'       => 'display_name',
-                    'pivot_table' => 'user_roles',
-                    'pivot'       => '1',
-                    'taggable'    => '0',
-                ],
-                'order'        => 11,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'settings');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'hidden',
-                'display_name' => 'Settings',
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 12,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 1,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'created_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($menuDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'number',
-                'display_name' => __('voyager::seeders.data_rows.id'),
-                'required'     => 1,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 1,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'created_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.created_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.updated_at'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($roleDataType, 'display_name');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.display_name'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 5,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($userDataType, 'role_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('voyager::seeders.data_rows.role'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 9,
-            ])->save();
-        }
-    }
-
-    /**
-     * [dataRow description].
-     *
-     * @param [type] $type  [description]
-     * @param [type] $field [description]
-     *
-     * @return [type] [description]
-     */
-    protected function dataRow($type, $field)
-    {
-        return DataRow::firstOrNew([
-            'data_type_id' => $type->id,
-            'field'        => $field,
-        ]);
     }
 }
